@@ -16,6 +16,7 @@ echo ""
 
 # add docker group and add ubuntu to it
 echo "hello"
+echo "docker run -d --rm -p 8080:8080 --name searchstring msgtokumar/testcode"
 
 
 
