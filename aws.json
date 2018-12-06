@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "aws_access_key": "AKIAJUUQ4LHNXC7KBEBA",
+    "aws_secret_key": "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"
+  },
+
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "ap-southeast-2",
+      "source_ami": "ami-09b42976632b27e9b",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ami_name": "packer-docker {{timestamp}}"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/docker.sh",
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E '{{ .Path }}'"
+    }
+  ]
+}
