@@ -5,11 +5,12 @@ OS := $(shell uname)
 build:
 	#./scripts/my-important-task.sh my-parameter
 	@echo    build..started
-	#mvn verify compile -DskipTests
+	#packer validate base_image.json
+	#packer build base_image.json
 
 package:
 	@echo    Package${GIT_REPO}
-	#mvn  package -DskipTests=true
+	#mvn  curl 
 
 test:
 	#mvn  test
